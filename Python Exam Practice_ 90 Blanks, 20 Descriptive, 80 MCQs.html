@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Python Exam Practice: 90 Blanks, 20 Descriptive, 80 MCQs</title>
+<style>
+:root{--bg:#f1f4f7;--card:#fff;--ink:#17222d;--mute:#5b6b7a;--line:#d6dde4;--acc:#1c6a8a;--accbg:#e3f0f6;--ok:#1e7b4a;--okbg:#e1f4e9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171d;--card:#18222b;--ink:#e6edf3;--mute:#9aabba;--line:#2b3946;--acc:#6cc0e0;--accbg:#1b3140;--ok:#62d08f;--okbg:#17342490;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10171d;--card:#18222b;--ink:#e6edf3;--mute:#9aabba;--line:#2b3946;--acc:#6cc0e0;--accbg:#1b3140;--ok:#62d08f;--okbg:#17342490;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font:700 1.6rem/1.2 Georgia,"Times New Roman",serif;margin:8px 0 4px}
+.sub{color:var(--mute);margin:0 0 16px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line);margin-bottom:14px}
+.tabs,.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools{margin-top:8px}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 12px}
+button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tab[aria-selected="true"]{background:var(--acc);border-color:var(--acc);color:var(--bg);font-weight:600}
+.tools button{font-size:.9rem;color:var(--acc)}
+ol.list{list-style:none;margin:0;padding:0;counter-reset:q}
+.q{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;counter-increment:q}
+.qt{margin:0 0 8px;font-weight:500}
+.qt::before{content:counter(q) ". ";color:var(--acc);font-weight:700}
+.opts{list-style:upper-alpha;margin:0 0 10px;padding-left:28px}
+.opts li{padding:2px 6px;border-radius:6px}
+.opts li.right{background:var(--okbg);color:var(--ok);font-weight:600}
+.tog{font-size:.9rem;padding:5px 11px;color:var(--acc);border-color:var(--acc)}
+.tog[aria-expanded="true"]{background:var(--accbg)}
+.ans{margin-top:10px;padding:10px 12px;border-left:3px solid var(--ok);background:var(--okbg);border-radius:0 8px 8px 0}
+.ans[hidden]{display:none}
+.ans code{background:var(--card);padding:1px 5px;border-radius:4px;font-size:.92em}
+.note{color:var(--mute);font-size:.9rem;margin-top:16px}
+</style>
+</head>
+<body>
+<main>
+<h1>Python Exam Practice</h1>
+<p class="sub">Answers stay hidden. Tap “Show answer” to reveal, tap again to hide.</p>
+<div class="bar">
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="tools"><button id="showAll">Show all answers</button><button id="hideAll">Hide all answers</button></div>
+</div>
+<div id="out"></div>
+<p class="note">Descriptive answers here are short key points for quick revision. Use them to jog your memory, then write the full answer with a definition, explanation, code example and diagram.</p>
+</main>
+<script>
+const FIB=[
+["Python is a ____ level, interpreted, general-purpose language.","high"],
+["Python was created by ____.","Guido van Rossum"],
+["The function used to find the data type of a variable is ____.","type()"],
+["Python uses ____ to define code blocks instead of braces.","indentation"],
+["The ____ operator is used for floor division.","//"],
+["The ____ operator is used for exponentiation.","**"],
+["Python is a ____ typed language, so types need not be declared.","dynamically"],
+["The ____ function takes input from the user.","input()"],
+["Single-line comments begin with the ____ symbol.","#"],
+["The ____ function returns the number of items in an object.","len()"],
+["____ are ordered, mutable collections written in square brackets.","Lists"],
+["____ are ordered, immutable collections written in parentheses.","Tuples"],
+["A ____ stores data as key-value pairs.","dictionary"],
+["A ____ is an unordered collection of unique elements.","set"],
+["Strings in Python are ____ (mutable/immutable).","immutable"],
+["The ____ method adds an element to the end of a list.","append()"],
+["The ____ method returns all keys of a dictionary.","keys()"],
+["Dictionary keys must be ____ (mutable/immutable).","immutable (hashable)"],
+["The ____ function converts a value to an integer.","int()"],
+["An empty set is created using ____, not {}.","set()"],
+["The ____ statement skips the current iteration of a loop.","continue"],
+["The ____ statement terminates a loop immediately.","break"],
+["The ____ statement is a null-operation placeholder.","pass"],
+["The ____ keyword defines a function.","def"],
+["A function with no name is called a ____ function.","lambda (anonymous)"],
+["Arguments passed as *args are collected into a ____.","tuple"],
+["Arguments passed as **kwargs are collected into a ____.","dictionary"],
+["A function that calls itself is called a ____ function.","recursive"],
+["The ____ keyword makes a function a generator.","yield"],
+["The ____ function generates a sequence of numbers.","range()"],
+["The block that always executes, with or without an exception, is ____.","finally"],
+["The ____ keyword raises an exception manually.","raise"],
+["The mode ____ opens a file for appending.","\"a\""],
+["The ____ statement automatically closes a file after use.","with"],
+["The ____ keyword brings a module into a program.","import"],
+["A ____ is a blueprint for creating objects.","class"],
+["The ____ method is the constructor in Python.","__init__"],
+["The process of one class acquiring properties of another is ____.","inheritance"],
+["The ability of a method to take many forms is ____.","polymorphism"],
+["A name starting with a double underscore (__x) makes an attribute ____.","private (name mangling)"],
+[`The ____ string method converts text to uppercase.`,`upper()`],
+[`The ____ string method removes leading and trailing whitespace.`,`strip()`],
+[`The ____ string method splits a string into a list.`,`split()`],
+[`The ____ string method joins items of an iterable into one string.`,`join()`],
+[`The ____ function returns the identity (address) of an object.`,`id()`],
+[`The ____ operator checks whether two names refer to the same object.`,`is`],
+[`The ____ function returns the largest item of an iterable.`,`max()`],
+[`The ____ function returns the total of the items of an iterable.`,`sum()`],
+[`The ____ function returns a new sorted list from an iterable.`,`sorted()`],
+[`The ____ list method sorts the list in place.`,`sort()`],
+[`The ____ list method removes the first matching value.`,`remove()`],
+[`The ____ list method inserts an element at a given index.`,`insert()`],
+[`The ____ function gives index and value pairs while looping.`,`enumerate()`],
+[`The ____ function combines several iterables item by item.`,`zip()`],
+[`The ____ operator gives the union of two sets.`,`| (pipe)`],
+[`The ____ operator gives the intersection of two sets.`,`& (ampersand)`],
+[`The ____ dictionary method returns key-value pairs.`,`items()`],
+[`The ____ dictionary method returns all values.`,`values()`],
+[`The ____ keyword deletes a variable or an item from a list.`,`del`],
+[`The ____ function converts a value to a string.`,`str()`],
+[`The ____ data type stores True or False.`,`bool`],
+[`The ____ data type stores numbers like 3+4j.`,`complex`],
+[`The value ____ represents the absence of a value.`,`None`],
+[`The ____ loop iterates over a sequence.`,`for`],
+[`The ____ loop repeats as long as a condition is true.`,`while`],
+[`The built-in function ____ is used to open a file.`,`open()`],
+[`The ____ method reads the entire content of a file.`,`read()`],
+[`The ____ module provides sqrt() and other maths functions.`,`math`],
+[`The ____ module works with dates and times.`,`datetime`],
+[`The ____ module is used for regular expressions.`,`re`],
+[`The ____ tool is used to install third-party packages.`,`pip`],
+[`When a script runs directly, __name__ equals ____.`,`"__main__"`],
+[`The ____ statement raises AssertionError if a condition is false.`,`assert`],
+[`The ____ block catches an exception.`,`except`],
+[`Accessing an index outside a list raises ____.`,`IndexError`],
+[`All built-in exceptions come from the ____ class hierarchy.`,`BaseException (Exception)`],
+[`The ____ method is the destructor in Python.`,`__del__`],
+[`The ____ function checks whether an object belongs to a class.`,`isinstance()`],
+[`The ____ function checks whether a class derives from another.`,`issubclass()`],
+[`The ____ decorator defines a method whose first parameter is cls.`,`@classmethod`],
+[`The ____ decorator lets a method be used like an attribute.`,`@property`],
+[`When a class has more than one parent, it is ____ inheritance.`,`multiple`],
+[`The ____ attribute of a class shows its Method Resolution Order.`,`__mro__`],
+[`The ____ function lists the attributes and methods of an object.`,`dir()`],
+[`The ____ method lets objects be compared with ==.`,`__eq__`],
+[`The ____ method lets len() work on an object.`,`__len__`],
+[`The ____ method makes an object callable like a function.`,`__call__`],
+[`Hiding data using private members is called ____.`,`encapsulation`],
+[`The ____ function creates an iterator from an iterable.`,`iter()`],
+[`The ____ function fetches the next item from an iterator.`,`next()`]
+];
+const DESC=[
+["What is Python? Explain its key features and applications.","<b>Definition:</b> high-level, interpreted, general-purpose language by Guido van Rossum (1991).<br><b>Features:</b> simple readable syntax, interpreted, dynamically typed, object-oriented, portable, large standard library, free and open source.<br><b>Applications:</b> web (Django, Flask), data science (NumPy, Pandas), AI/ML, automation, games, GUIs."],
+["Differentiate between a list, tuple, set and dictionary.","<b>List</b> <code>[ ]</code>: ordered, mutable, duplicates allowed.<br><b>Tuple</b> <code>( )</code>: ordered, immutable, faster.<br><b>Set</b> <code>{ }</code>: unordered, mutable, unique items, no indexing.<br><b>Dictionary</b> <code>{k: v}</code>: key-value pairs, unique immutable keys, lookup by key."],
+["Explain the types of function arguments.","<b>Positional</b> (by order), <b>keyword</b> (by name), <b>default</b> (fallback value), <b>*args</b> (extra positionals into a tuple), <b>**kwargs</b> (extra keywords into a dict).<br>Order: positional, default, *args, **kwargs."],
+["Explain lambda, map(), filter() and list comprehensions.","<b>lambda</b>: one-line anonymous function, <code>lambda x: x*x</code>.<br><b>map(f, it)</b>: applies f to every item.<br><b>filter(f, it)</b>: keeps items where f is True.<br><b>Comprehension:</b> <code>[x**2 for x in range(5) if x%2==0]</code>. Shorter and often faster than loops."],
+["What is exception handling? Explain try, except, else, finally.","An exception is a run-time error; handling stops the program from crashing.<br><b>try</b>: risky code. <b>except</b>: runs on error. <b>else</b>: runs if no error. <b>finally</b>: always runs (cleanup).<br>Use <code>raise</code> to throw manually. Examples: ZeroDivisionError, ValueError, KeyError."],
+["Explain file handling, file modes and the with statement.","Use <code>open(name, mode)</code>. Modes: <b>r</b> read, <b>w</b> write (overwrites), <b>a</b> append, <b>x</b> create, <b>r+</b> read/write, <b>b</b> binary.<br>Methods: read(), readline(), readlines(), write(), close().<br><code>with open(...) as f:</code> closes the file automatically, even on errors."],
+["What is OOP? Explain its four pillars.","OOP organizes code into classes (blueprints) and objects (instances).<br><b>Encapsulation:</b> bundling data and methods, restricting access.<br><b>Abstraction:</b> hiding details, showing essentials (abc module).<br><b>Inheritance:</b> child reuses parent members.<br><b>Polymorphism:</b> same name, different behaviour."],
+["Explain the types of inheritance with examples.","<b>Single:</b> one parent, one child. <b>Multilevel:</b> A to B to C. <b>Multiple:</b> one child, many parents. <b>Hierarchical:</b> many children, one parent. <b>Hybrid:</b> combination, may cause the diamond problem solved by MRO.<br><code>super()</code> calls the parent’s methods or constructor."],
+["What is polymorphism? Explain overriding and operator overloading.","Polymorphism means many forms.<br><b>Overriding:</b> child redefines a parent method with the same name.<br><b>Operator overloading:</b> give operators meaning for your class using dunder methods like <code>__add__</code>, <code>__str__</code>, <code>__eq__</code>.<br>Python has no signature-based method overloading; use default arguments or *args."],
+["Differentiate instance, class and static methods; explain constructors and access specifiers.","<b>Instance:</b> takes <code>self</code>, uses object data. <b>Class:</b> <code>@classmethod</code>, takes <code>cls</code>. <b>Static:</b> <code>@staticmethod</code>, no self or cls.<br><b>Constructor:</b> <code>__init__</code> runs when an object is created; <code>__del__</code> on destruction.<br><b>Access:</b> public <code>x</code>, protected <code>_x</code> (convention), private <code>__x</code> (name mangling)."],
+[`Explain data types and type conversion in Python.`,`<b>Numeric:</b> int, float, complex. <b>Text:</b> str. <b>Sequence:</b> list, tuple, range. <b>Mapping:</b> dict. <b>Set:</b> set, frozenset. <b>Boolean:</b> bool. <b>None:</b> NoneType.<br><b>Implicit conversion:</b> Python promotes automatically (int + float gives float).<br><b>Explicit conversion (casting):</b> <code>int("5")</code>, <code>float(3)</code>, <code>str(10)</code>, <code>list("abc")</code>. Use <code>type()</code> to check.`],
+[`Explain the operators in Python.`,`<b>Arithmetic:</b> + - * / // % **. <b>Relational:</b> == != &lt; &gt; &lt;= &gt;=. <b>Logical:</b> and, or, not. <b>Assignment:</b> = += -= *=. <b>Bitwise:</b> &amp; | ^ ~ &lt;&lt; &gt;&gt;. <b>Membership:</b> in, not in. <b>Identity:</b> is, is not.<br>Precedence: ** first, then * / // %, then + -, then comparisons, then not, and, or.`],
+[`Explain string slicing and common string methods.`,`<b>Slicing:</b> <code>s[start:stop:step]</code>; stop is excluded; negative indices count from the end; <code>s[::-1]</code> reverses. Strings are immutable.<br><b>Methods:</b> upper(), lower(), strip(), split(), join(), replace(), find(), startswith(), count(), title().`],
+[`Explain if-elif-else and loops with break, continue and pass.`,`<b>Decision:</b> <code>if</code>, <code>elif</code>, <code>else</code> run the first true branch.<br><b>Loops:</b> <code>for</code> iterates over a sequence; <code>while</code> repeats while a condition is true.<br><b>break</b> exits the loop, <b>continue</b> skips to the next iteration, <b>pass</b> does nothing (placeholder). A loop <code>else</code> runs if no break occurred.`],
+[`Explain recursion with an example.`,`Recursion is a function calling itself. It needs a <b>base case</b> (stops) and a <b>recursive case</b>.<br><code>def fact(n): return 1 if n==0 else n*fact(n-1)</code><br><b>Pros:</b> short, natural for trees and divide-and-conquer. <b>Cons:</b> uses more memory, slower, recursion limit (about 1000) can cause RecursionError.`],
+[`What are modules and packages? How are they imported?`,`A <b>module</b> is a .py file with functions, classes and variables. A <b>package</b> is a folder of modules with an <code>__init__.py</code> file.<br>Imports: <code>import math</code>, <code>import math as m</code>, <code>from math import sqrt</code>, <code>from math import *</code>.<br>Benefits: reuse, organization, namespaces.`],
+[`Explain generators and decorators.`,`<b>Generator:</b> function using <code>yield</code>; returns values one at a time (lazy), saving memory. Example: <code>def count(n): for i in range(n): yield i</code>.<br><b>Decorator:</b> a function that takes another function and extends its behaviour without changing its code; applied with <code>@name</code> above the function (logging, timing, authentication).`],
+[`Explain local, global and nonlocal variables and the LEGB rule.`,`<b>Local:</b> defined inside a function. <b>Global:</b> defined outside; changed inside a function with <code>global</code>. <b>Nonlocal:</b> variable of the enclosing function, changed in a nested function with <code>nonlocal</code>.<br><b>LEGB:</b> Python searches Local, Enclosing, Global, Built-in, in that order.`],
+[`Explain abstraction using the abc module.`,`Abstraction hides implementation and exposes essentials. Use <code>from abc import ABC, abstractmethod</code>; a class inheriting <code>ABC</code> with <code>@abstractmethod</code> methods is an <b>abstract class</b>.<br>It cannot be instantiated; subclasses must implement all abstract methods. Example: Shape with abstract area(); Circle and Square implement it.`],
+[`Explain Method Resolution Order, the diamond problem and super().`,`In multiple inheritance, <b>MRO</b> is the order in which Python searches classes for a method. It uses <b>C3 linearization</b>; check it with <code>ClassName.__mro__</code> or <code>mro()</code>.<br><b>Diamond problem:</b> D inherits B and C, both inherit A; MRO ensures A is visited once, after B and C.<br><code>super()</code> follows the MRO to call the next class’s method.`]
+];
+const MCQ=[
+["Which of these is NOT a built-in Python data type?",["int","float","char","str"],2],
+["What is the output of print(type(5/2))?",["int","float","double","complex"],1],
+["What is the output of print(2**3**2)?",["64","512","36","128"],1],
+["What does print(bool(\"False\")) display?",["True","False","Error","None"],0],
+["Which list method removes and returns the last item?",["remove()","pop()","delete()","discard()"],1],
+["What is len({1, 2, 2, 3})?",["4","3","2","Error"],1],
+["Which of these is immutable?",["list","dict","tuple","set"],2],
+["What is \"Python\"[::-1]?",["nohtyP","Python","Pytho","Error"],0],
+["Which creates an empty dictionary?",["[]","()","{}","set()"],2],
+["What is the output of print(10//3, 10%3)?",["3 1","3.33 1","3 0","4 1"],0],
+["Which operator checks membership in a sequence?",["is","in","==","of"],1],
+["range(2, 10, 3) generates:",["2, 5, 8","2, 5, 8, 10","2, 4, 6, 8","3, 6, 9"],0],
+["The else block of a for loop runs when:",["the loop finishes without break","the loop is broken","always","never"],0],
+["Default argument values are evaluated:",["at every call","at function definition","never","only on import"],1],
+["*args collects extra positional arguments into a:",["list","dictionary","tuple","set"],2],
+["Which is a valid lambda?",["lambda(x): x+1","lambda x -> x+1","lambda x: x+1","def lambda x: x+1"],2],
+["What does list(map(str.upper, [\"a\", \"b\"])) return?",["['a', 'b']","['A', 'B']","'AB'","Error"],1],
+["Which keyword lets a function modify a global variable?",["extern","static","global","nonlocal"],2],
+["LEGB stands for:",["Local, Enclosing, Global, Built-in","Loop, Else, Global, Break","List, Enum, Generic, Base","Local, External, Global, Base"],0],
+["Which module is used to generate random numbers?",["math","random","os","sys"],1],
+["Which statement imports only sqrt from math?",["import sqrt from math","from math import sqrt","import math.sqrt only","using math.sqrt"],1],
+["int(\"abc\") raises:",["TypeError","ValueError","KeyError","NameError"],1],
+["Accessing a missing dictionary key with d[k] raises:",["IndexError","ValueError","KeyError","AttributeError"],2],
+["10/0 raises:",["ValueError","ArithmeticOnly","ZeroDivisionError","OverflowError"],2],
+["The else block of try-except runs when:",["an exception occurs","no exception occurs","always","never"],1],
+["Which mode opens a file for reading and writing without erasing it?",["w","a","r+","x"],2],
+["f.readlines() returns:",["a single string","a list of lines","a tuple","a dictionary"],1],
+["Which dictionary method returns None if a key is missing instead of raising an error?",["pop()","get()","keys()","update()"],1],
+["Which method adds an element to a set?",["append()","insert()","add()","push()"],2],
+["What is [1, 2, 3] + [4]?",["[1, 2, 3, 4]","[5, 6, 7]","[1, 2, 3, [4]]","Error"],0],
+["What is \"a\" * 3?",["a3","aaa","Error","3a"],1],
+["A decorator is a function that:",["only prints text","modifies the behaviour of another function","creates a class","imports a module"],1],
+["__init__ is called:",["manually only","automatically when an object is created","when an object is deleted","when a module loads"],1],
+["In a method, self refers to:",["the class","the parent class","the current instance","the module"],2],
+["A class variable is defined:",["inside __init__ using self","inside the class but outside methods","only in a function","in another file"],1],
+["Which syntax makes B inherit from A?",["class B extends A","class B(A):","class B inherits A","class B : A"],1],
+["Which statement is true about Python?",["No multiple inheritance","Supports multiple inheritance","Only single inheritance","Inheritance is not allowed"],1],
+["super() is used to:",["delete a class","call parent class methods","create a static method","import a module"],1],
+["MRO stands for:",["Method Resolution Order","Memory Reference Object","Module Run Order","Main Run Object"],0],
+["Method overriding occurs when:",["two classes share a name","a subclass redefines a parent method","a method is deleted","a function has many arguments"],1],
+["Which dunder method gives a readable string for an object?",["__init__","__str__","__add__","__del__"],1],
+["Which dunder method overloads the + operator?",["__plus__","__add__","__sum__","__concat__"],1],
+["Which name is treated as private through name mangling?",["x","_x","__x","x_"],2],
+["A @staticmethod:",["must take self","must take cls","needs neither self nor cls","cannot be called on a class"],2],
+["A @classmethod receives which first parameter?",["self","cls","obj","this"],1],
+["Abstract classes are created with the ____ module.",["abc","os","re","json"],0],
+["A class with unimplemented abstract methods:",["can be instantiated freely","cannot be instantiated","is deleted","becomes a function"],1],
+["isinstance(5, int) returns:",["False","True","None","Error"],1],
+["A generator produces values lazily using:",["return","yield","break","pass"],1],
+[`What is the output of print(7 % 3)?`,[`2`,`1`,`3`,`0`],1],
+[`What is the output of print('abc'.upper())?`,[`abc`,`Abc`,`ABC`,`Error`],2],
+[`What does 'a,b,c'.split(',') return?`,[`['a', 'b', 'c']`,`'abc'`,`('a', 'b', 'c')`,`{'a', 'b', 'c'}`],0],
+[`What does max([3, 9, 2]) return?`,[`3`,`2`,`9`,`14`],2],
+[`What is the output of print(type([]))?`,[`<class 'tuple'>`,`<class 'list'>`,`<class 'dict'>`,`<class 'set'>`],1],
+[`Which is a valid variable name?`,[`2var`,`my-var`,`class`,`_var`],3],
+[`What does print(3 == 3.0) show?`,[`True`,`False`,`Error`,`None`],0],
+[`Which function returns a sorted list without changing the original?`,[`sort()`,`sorted()`,`order()`,`arrange()`],1],
+[`What is the output of print(list(range(3)))?`,[`[1, 2, 3]`,`[0, 1, 2, 3]`,`[0, 1, 2]`,`(0, 1, 2)`],2],
+[`Which statements are used to handle exceptions?`,[`if-else`,`try-except`,`for-while`,`def-return`],1],
+[`What is the output of print('Hi'[0])?`,[`H`,`i`,`Hi`,`Error`],0],
+[`Which dictionary method returns key-value pairs?`,[`keys()`,`values()`,`items()`,`get()`],2],
+[`What is the output of print(5 > 3 and 2 > 4)?`,[`True`,`False`,`None`,`Error`],1],
+[`Which symbol is used to apply a decorator?`,[`#`,`$`,`&`,`@`],3],
+[`Which of these is mutable?`,[`int`,`str`,`dict`,`tuple`],2],
+[`What is len('Python')?`,[`5`,`6`,`7`,`Error`],1],
+[`What does bool([]) return?`,[`True`,`False`,`None`,`Error`],1],
+[`Which list method adds several items at once?`,[`append()`,`extend()`,`add()`,`push()`],1],
+[`What is the output of print(10 / 2)?`,[`5`,`5.0`,`2`,`Error`],1],
+[`A function with no return statement returns:`,[`0`,`Error`,`None`,`An empty string`],2],
+[`What does if __name__ == '__main__' check?`,[`Whether the file is a module`,`Whether the script is run directly`,`Whether a class exists`,`Whether Python is installed`],1],
+[`A single underscore prefix (_x) indicates:`,[`A private member enforced by Python`,`A protected member by convention`,`A static method`,`A constant`],1],
+[`Which function lets a child class reuse the parent constructor?`,[`parent()`,`base()`,`super()`,`self()`],2],
+[`Encapsulation means:`,[`Binding data and methods together and restricting access`,`Creating many objects`,`Deleting a class`,`Importing modules`],0],
+[`Which is NOT a pillar of OOP?`,[`Inheritance`,`Polymorphism`,`Compilation`,`Abstraction`],2],
+[`What does the @property decorator do?`,[`Makes a method static`,`Lets a method be accessed like an attribute`,`Deletes an attribute`,`Creates a class`],1],
+[`Which command installs a package?`,[`install pkg`,`pip install pkg`,`python get pkg`,`import pkg`],1],
+[`Which method is called when an object is destroyed?`,[`__init__`,`__str__`,`__del__`,`__new__`],2],
+[`Which function checks if an object belongs to a class?`,[`type_of()`,`isinstance()`,`hasclass()`,`classof()`],1],
+[`Which method makes an instance callable like a function?`,[`__call__`,`__run__`,`__exec__`,`__invoke__`],0],
+[`Which function gets the next item from an iterator?`,[`go()`,`step()`,`next()`,`fetch()`],2]
+];
+const SECS=[["Fill in the blanks ("+FIB.length+")","fib"],["Descriptive ("+DESC.length+")","desc"],["MCQs ("+MCQ.length+")","mcq"]];
+const out=document.getElementById("out"),tabs=document.getElementById("tabs");
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function item(q,html,opts,ci){
+  const li=el("li","q");li.appendChild(el("p","qt",q));
+  let ol=null;
+  if(opts){ol=el("ol","opts");opts.forEach(o=>ol.appendChild(el("li",null,o)));li.appendChild(ol)}
+  const b=el("button","tog","Show answer");b.setAttribute("aria-expanded","false");
+  const a=el("div","ans");a.hidden=true;
+  if(opts)a.textContent="Answer: "+"ABCD"[ci]+". "+opts[ci];
+  else if(html)a.innerHTML=html;
+  b.onclick=()=>set(li,a.hidden);
+  li._set=v=>{a.hidden=!v;b.textContent=v?"Hide answer":"Show answer";b.setAttribute("aria-expanded",v);if(ol)ol.children[ci].classList.toggle("right",v)};
+  li.appendChild(b);li.appendChild(a);return li}
+function set(li,v){li._set(v)}
+const lists={};
+SECS.forEach(([name,id],i)=>{
+  const ol=el("ol","list");ol.hidden=true;
+  if(id==="fib")FIB.forEach(([q,a])=>{const li=item(q,null);li.lastChild.innerHTML="";li.lastChild.textContent="Answer: "+a;ol.appendChild(li)});
+  if(id==="desc")DESC.forEach(([q,a])=>ol.appendChild(item(q,a)));
+  if(id==="mcq")MCQ.forEach(([q,o,c])=>ol.appendChild(item(q,null,o,c)));
+  out.appendChild(ol);lists[id]=ol;
+  const t=el("button","tab",name);t.setAttribute("role","tab");t.onclick=()=>show(id);t.dataset.id=id;tabs.appendChild(t)});
+let cur="fib";
+function show(id){cur=id;for(const k in lists)lists[k].hidden=k!==id;
+  [...tabs.children].forEach(t=>t.setAttribute("aria-selected",t.dataset.id===id));window.scrollTo(0,0)}
+document.getElementById("showAll").onclick=()=>[...lists[cur].children].forEach(li=>set(li,true));
+document.getElementById("hideAll").onclick=()=>[...lists[cur].children].forEach(li=>set(li,false));
+show("fib");
+</script>
+</body>
+</html>
